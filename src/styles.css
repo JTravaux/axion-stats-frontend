@@ -1,0 +1,171 @@
+:root {
+  --main-bg-color: #EAEEF7;
+  --primary-main-color:#4c598e;
+  --secondary-main-color:#6D7BB9;
+  --font-family: 'Poppins', sans-serif;
+  --text-secondary-color: rgba(0,0,0, 0.54);
+  --card-bg-hue: #e6eaf7;
+  --card-accordian-hue: #e7eaf7;
+  --stake-row-bg: #e7eaf7;
+  --text-primary-color: rgba(0,0,0, 0.87);
+}
+
+.cardHue {
+  background-color: var(--card-bg-hue) !important;
+}
+
+.accordianHues {
+  background-color: var(--card-accordian-hue) !important;
+}
+
+.MuiTypography-colorPrimary {
+  color: var(--primary-main-color) !important;
+}
+
+.MuiTypography-colorTextSecondary {
+  color: var(--text-secondary-color) !important;
+}
+
+.MuiTypography-colorTextPrimary {
+  color: var(--text-primary-color) !important;
+}
+
+.MuiTypography-colorSecondary {
+  color: var(--secondary-main-color) !important;
+}
+
+body {
+  background-color: var(--main-bg-color) !important;
+}
+
+.card {
+    z-index: 1;
+    position: relative;
+}
+
+.auctionHeader {
+  border: 1px solid var(--primary-main-color);
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.tableControls {
+  margin: 1% 0;
+  padding: 0.25% 0.5%;
+  border: 1px solid rgba(0,0,0, 0.25);
+  background-color: #4C598E;
+  border-radius: 10px;
+}
+.auctionTableRow {
+  margin: 1% auto;
+  padding: 0.35%;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.2)
+}
+
+.navBar {
+  /* border-radius: 15px; */
+  padding: 0;
+}
+
+.headerLinks {
+    text-align: center;
+}
+
+.cardBG {
+    position: absolute;
+    opacity: 0.4;
+    z-index: -1;
+}
+
+.tooltip { 
+  font-size: 0.8rem !important;
+  color: #415076 !important;
+  border: 1px solid rgba(0,0,0,0.5);
+  background-color: #F5F6FA !important;
+}
+
+.clickableLink {
+  cursor: pointer;
+  display: inline-block;
+  padding: 5px 15px;
+  position: relative;
+}
+
+.clickableLink:after {    
+  background: none repeat scroll 0 0 transparent;
+  bottom: 0;
+  content: "";
+  display: block;
+  height: 2px;
+  left: 50%;
+  position: absolute;
+  background: var(--secondary-main-color);
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+  width: 0;
+}
+
+.clickableLink:hover:after { 
+  width: 100%; 
+  left: 0; 
+}
+
+.linksSectionLink {
+  border: 0.5px solid var(--secondary-main-color);
+  border-radius: 10px;
+  margin: 2% 1% !important;
+  padding: 0.25%
+}
+
+.linksSectionLink:hover {
+  cursor: pointer;
+  font-weight: bolder;
+}
+
+
+.linksSectionLinkDense {
+  border: 0.5px solid var(--secondary-main-color);
+  border-radius: 10px;
+  margin: 1% !important;
+  padding: 0.25%
+}
+
+.linksSectionLinkDense:hover {
+  cursor: pointer;
+  font-weight: bolder;
+}
+
+.textLink {
+  cursor: pointer;
+  color: var(--primary-main-color);
+}
+
+.textLink:hover {
+  cursor: pointer;
+  color: var(--secondary-main-color);
+}
+
+.referralButton {
+  margin-left: 15px !important;
+  background-color: #bb40a8 !important;
+  
+}
+
+.referralButton:hover {
+  background-color: #d865c9 !important;
+}
+
+.stakeRow {
+  background-color: var(--stake-row-bg) !important;
+  padding: 0.5%
+}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}

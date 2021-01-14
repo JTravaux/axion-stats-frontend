@@ -1,0 +1,47 @@
+{
+    "totals": {
+        "holders": 8540,
+        "held_axn": 177299732299.44785,
+        "last_updated": 1603983919172
+    },
+    "shrimp": {
+        "count": 278,
+        "totalAxn": 58868,
+        "holders": []
+    },
+    "crab": {
+        "count": 4348,
+        "totalAxn": 920083705,
+        "holders": []
+    },
+    "fish": {
+        "count": 2551,
+        "totalAxn": 8969641351,
+        "holders": []
+    },
+    "octopus": {
+        "count": 966,
+        "totalAxn": 20542164663,
+        "holders": []
+    },
+    "dolphin": {
+        "count": 163,
+        "totalAxn": 10833725102,
+        "holders": []
+    },
+    "tigerShark": {
+        "count": 169,
+        "totalAxn": 35608984009,
+        "holders": []
+    },
+    "greatWhite": {
+        "count": 26,
+        "totalAxn": 17181288141,
+        "holders": []
+    },
+    "whale": {
+        "count": 39,
+        "totalAxn": 83243786457,
+        "holders": []
+    }
+}
