@@ -6,6 +6,7 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme } from '@material-ui/core/styles';
 import eden from '../../assets/img/eden.jpg';
 import edenLoogo from '../../assets/img/eden-logo.png';
+import { BASE_URL } from '../../constants';
 
 const MESSAGE = {
     col1:[
@@ -28,7 +29,7 @@ const TreeStats = () => {
     const isMedium = useMediaQuery(theme.breakpoints.down('md'));
 
     const _fetchTreeCount = async () => {
-        let res = await fetch('auction/trees');
+        let res = await fetch(`${BASE_URL}/auction/trees`);
         let res_json = await res.json();
         setNumTrees(res_json.trees)
         setAmountDonated(res_json.amount)
