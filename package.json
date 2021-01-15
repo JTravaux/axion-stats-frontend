@@ -21,8 +21,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "build-move": "react-scripts build && robocopy build/ ../axion_eco_backend/frontend /mir",
-    "aws-deploy": "react-scripts build && aws s3 sync build/ s3://axionstats.info --acl public-read --profile Personal"
+    "aws-deploy": "react-scripts build && aws s3 sync build/ s3://axionstats.info --acl public-read && aws cloudfront create-invalidation --distribution-id E1CA513N35H2V5 --paths \"/*\" --profile Personal"
   },
   "eslintConfig": {
     "extends": [

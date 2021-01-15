@@ -6,6 +6,7 @@ import { useSnackbar } from 'notistack';
 import { makeStyles } from "@material-ui/core/styles";
 import { AppBar, Button, CircularProgress, Divider, Grid, Tab, Tabs, TextField, Typography } from '@material-ui/core';
 import StatCard from './TotalsCard';
+import { BASE_URL } from '../../constants';
 
 const useStyles = makeStyles({
     root: {
@@ -54,7 +55,7 @@ const StakeExplorer = props => {
 
     const _getActiveStakes = addr => {
         return new Promise(async (resolve, reject) => {
-            fetch(`/staking/stakes/active/${addr}`).then(result => {
+            fetch(`${BASE_URL}/staking/stakes/active/${addr}`).then(result => {
                 result.json().then(res => {
                     resolve(res);
                 })
@@ -67,7 +68,7 @@ const StakeExplorer = props => {
 
     const _getCompleteStakes = addr => {
         return new Promise(async (resolve, reject) => {
-            fetch(`/staking/stakes/complete/${addr}`).then(result => {
+            fetch(`${BASE_URL}/staking/stakes/complete/${addr}`).then(result => {
                 result.json().then(res => {
                     resolve(res);
                 })
