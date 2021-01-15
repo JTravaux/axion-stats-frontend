@@ -28,20 +28,8 @@ const useAuctionData = () => {
         })
     }
 
-    // const _getCountdown = () => {
-    //     return new Promise((resolve, reject) => {
-    //         fetch(`auction/countdown`).then(result => {
-    //             result.json().then(res => {
-    //                 setCountdown(res)
-    //                 resolve();
-    //             })
-    //         }).catch(err => reject(err))
-    //     })
-    // }
-
     useEffect(() => {
         _getAuctions();
-        //_getCountdown();
         _getCurrentAuction();
         const UPDATER = setInterval(() => _getCurrentAuction(), (1000 * 60) * 2)
         
