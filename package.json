@@ -19,9 +19,13 @@
     "web3": "^1.3.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "prodify": "powershell -Command \"(gc ./src/constants.js) -replace '`http://localhost:8080`', '`https://api.axionstats.info`' | Out-File -encoding ASCII ./src/constants.js\"",
+    "locaify": "powershell -Command \"(gc ./src/constants.js) -replace '`https://api.axionstats.info`', '`http://localhost:8080`' | Out-File -encoding ASCII ./src/constants.js\"",
     "build": "react-scripts build",
-    "aws-deploy": "react-scripts build && aws s3 sync build/ s3://axionstats.info --acl public-read && aws cloudfront create-invalidation --distribution-id E1CA513N35H2V5 --paths \"/*\" --profile Personal"
+    "upload": "aws s3 sync build/ s3://axionstats.info --acl public-read --profile Personal",
+    "invalidate": "aws cloudfront create-invalidation --distribution-id E1CA513N35H2V5 --paths \"/*\" --profile Personal",
+    "start": "npm run locaify && react-scripts start",
+    "deploy": "npm run prodify && npm run build && npm run upload && npm run invalidate"
   },
   "eslintConfig": {
     "extends": [

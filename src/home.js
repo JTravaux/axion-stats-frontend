@@ -11,7 +11,7 @@ import useStakingData from './hooks/useStakingData';
 import useFreeclaimData from './hooks/useFreeclaimData';
 import FreeclaimStats from './views/freeclaim_stats/FreeclaimStats';
 
-const VERSION = "v1.9";
+const VERSION = "v2.0";
 
 const Home = () => {
     const { stakingStats, stakingStatsLoading } = useStakingData();

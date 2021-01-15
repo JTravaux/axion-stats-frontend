@@ -1,1 +1,1 @@
-export const BASE_URL = "https://api.axionstats.info";
+export const BASE_URL = `http://localhost:8080`;
