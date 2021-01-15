@@ -171,7 +171,7 @@ const StakeExplorer = props => {
                     <br/>
                     
                     <Grid container alignItems="center" justify="center" spacing={2}>
-                        {tabValue === 0 ? activeStakes.map(s => <Grid item xs={12}><Stake {...s} type="stake" /></Grid>) : completedStakes.map(s => <Grid item xs={12}><Stake {...s} type="complete" /></Grid>)}
+                        {tabValue === 0 ? activeStakes.map((s, idx) => <Grid key={idx} item xs={12}><Stake {...s} type="stake" /></Grid>) : completedStakes.map((s, idx) => <Grid key={idx} item xs={12}><Stake {...s} type="complete" /></Grid>)}
                     </Grid>
                 </>)}
             
