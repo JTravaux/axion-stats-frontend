@@ -67,56 +67,63 @@ const LiveEvents = () => {
     return (
         <div>
             <Header />
-
-            <div style={{width: '55%', margin: '1% auto'}}>
-                <Card className="accordianHues" style={{padding: '1%', margin: '1%', borderRadius: '5px'}} elevation={12}>
-                    <Grid container justify="space-between" alignItems="center">
-                        <Grid item>
-                            <Typography variant="subtitle1" align="center" color="secondary">This page will automatically update as new Stakes and Unstakes happen.</Typography>
-                        </Grid>
-                        <Grid item>
-                            <Tooltip title={connected ? "Connected! Waiting for events..." : "Connecting..."} classes={{ tooltip: 'tooltip' }} placement="right">
-                                <RadioButtonCheckedIcon style={{ color: connected ? '#2DC574' : 'red', fontSize: '13px', cursor: 'pointer' }} />
-                            </Tooltip>
-                        </Grid>
-                    </Grid>
-                </Card>
-  
-                {liveEvents.map((s, idx) => (
-                    <Card key={idx} className="accordianHues" style={{ margin: '1%', padding: '1%', border: '1px solid var(--secondary-main-color)', textAlign: 'center' }} elevation={12}>
-                        <Grid container justify="space-between" alignItems="center">
-                            <Grid container item xs={3} justify="space-between" alignItems="center">
-                                <Grid item xs={2}>
-                                    <Typography variant="subtitle1" color="primary" style={{ fontWeight: '500' }}>{s.type}</Typography>
+            <div style={{margin: '1%'}}>
+                <Grid container justify="space-evenly" spacing={2}>
+                    <Grid item md={6} xs={12}>
+                        <Card className="accordianHues" style={{ padding: '1%', margin: '1%', borderRadius: '5px' }} elevation={12}>
+                            <Grid container justify="space-between" alignItems="center">
+                                <Grid item>
+                                    <Typography variant="subtitle1" color="primary" style={{fontWeight: 'bold'}}>Live Events</Typography>
+                                    <Typography variant="subtitle2" color="secondary">This section will automatically update as new stakes and unstakes happen.</Typography>
                                 </Grid>
-                                <Grid item container>
-                                    <Grid item>
-                                        <Typography variant="subtitle2" color="secondary" style={{ fontStyle: 'italic' }}>{moment(s.time).fromNow()}</Typography>
+                                <Grid item>
+                                    <Tooltip title={connected ? "Connected! Waiting for events..." : "Connecting..."} classes={{ tooltip: 'tooltip' }} placement="right">
+                                        <RadioButtonCheckedIcon style={{ color: connected ? '#2DC574' : 'red', fontSize: '13px', cursor: 'pointer' }} />
+                                    </Tooltip>
+                                </Grid>
+                            </Grid>
+                        </Card>
+
+                        {liveEvents.map((s, idx) => (
+                            <Card key={idx} className="accordianHues" style={{ margin: '1%', padding: '1%', border: '1px solid var(--secondary-main-color)', textAlign: 'center' }} elevation={12}>
+                                <Grid container justify="space-between" alignItems="center">
+                                    <Grid container item xs={3} justify="space-between" alignItems="center">
+                                        <Grid item xs={2}>
+                                            <Typography variant="subtitle1" color="primary" style={{ fontWeight: '500' }}>{s.type}</Typography>
+                                        </Grid>
+                                        <Grid item container>
+                                            <Grid item>
+                                                <Typography variant="subtitle2" color="secondary" style={{ fontStyle: 'italic' }}>{moment(s.time).fromNow()}</Typography>
+                                            </Grid>
+                                        </Grid>
+                                    </Grid>
+                                    <Grid item xs={2}>
+                                        <Typography variant="subtitle1" color="primary">{(s.amount / 1000000000000000000).toLocaleString()} AXN</Typography>
+                                        <Typography variant="subtitle2" color="secondary">Amount</Typography>
+                                    </Grid>
+                                    <Grid item xs={2}>
+                                        <Typography variant="subtitle1" color="primary">{(s.shares / 1000000000000000000).toLocaleString()}</Typography>
+                                        <Typography variant="subtitle2" color="secondary">Shares</Typography>
+                                    </Grid>
+                                    <Grid item xs={2}>
+                                        <Typography variant="subtitle1" color="primary">{moment.unix(s.end).diff(moment.unix(s.start), 'days')}</Typography>
+                                        <Typography variant="subtitle2" color="secondary">Days</Typography>
+                                    </Grid>
+                                    <Grid item xs={1}>
+                                        <Tooltip title="View on Etherscan" classes={{ tooltip: 'tooltip' }} placement="right">
+                                            <IconButton onClick={() => openTx(s.txid)}>
+                                                <OpenInNewIcon fontSize="small" style={{ color: "var(--primary-main-color)" }} />
+                                            </IconButton>
+                                        </Tooltip>
                                     </Grid>
                                 </Grid>
-                            </Grid>
-                            <Grid item xs={2}>
-                                <Typography variant="subtitle1" color="primary">{(s.amount / 1000000000000000000).toLocaleString()} AXN</Typography>
-                                <Typography variant="subtitle2" color="secondary">Amount</Typography>
-                            </Grid>
-                            <Grid item xs={2}>
-                                <Typography variant="subtitle1" color="primary">{(s.shares / 1000000000000000000).toLocaleString()}</Typography>
-                                <Typography variant="subtitle2" color="secondary">Shares</Typography>
-                            </Grid>
-                            <Grid item xs={2}>
-                                <Typography variant="subtitle1" color="primary">{moment.unix(s.end).diff(moment.unix(s.start), 'days')}</Typography>
-                                <Typography variant="subtitle2" color="secondary">Days</Typography>
-                            </Grid>
-                            <Grid item xs={1}>
-                                <Tooltip title="View on Etherscan" classes={{ tooltip: 'tooltip' }} placement="right">
-                                    <IconButton onClick={() => openTx(s.txid)}>
-                                        <OpenInNewIcon fontSize="small" style={{ color: "var(--primary-main-color)" }}/>
-                                    </IconButton>
-                                </Tooltip>
-                            </Grid>
-                        </Grid>
-                    </Card>
-                ))}
+                            </Card>
+                        ))}
+                    </Grid>
+                    <Grid item md={6} xs={12}>
+
+                    </Grid>
+                </Grid>
             </div>
         </div>
     )
