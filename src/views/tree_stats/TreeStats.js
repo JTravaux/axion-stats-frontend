@@ -141,11 +141,13 @@ const TreeStats = () => {
                         </Typography>
                         <Typography variant="subtitle1" color="primary" style={{ marginTop: '2%' }}>How is this calculated?</Typography>
                         <Typography variant="subtitle2" color="primary" style={{ marginTop: '2%', fontWeight: 400 }}>
-                            For every deposit into Axion's daily or weekly auction, 80% of the ETH gets used to buyback and distribute AXN to stakers and 20% goes to the Axion team. 
-                            From team's share, 19% will go towards expenses &amp; ecosystem expansion, and 1% has been pledged to the Eden Reforestation Project.
+                            For every deposit into Axion's daily or weekly auction, 80% of the ETH gets used to buyback and distribute AXN to stakers,
+                            19% goes to Axion and 1% is pledged to the Eden Reforestation Project.
                         </Typography>
                         <Typography variant="subtitle2" color="primary" style={{ marginTop: '2%', fontWeight: 400 }}>
-                            To calculate, I simply take 5% of the total recieved amount to Axion's address and convert that amount to USD. This works out to 1% of total auction deposits. Trees are roughly $0.10 each, so some basic math and you have the answer.</Typography>
+                            To calculate, I simply take 1% of the total ETH entered into all auctions this far and convert that amount to USD. 
+                            Trees are roughly $0.10 each, so some basic math and you have the answer.       
+                        </Typography>             
                     </AccordionDetails>
                 </Accordion>
             </div>

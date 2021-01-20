@@ -3,29 +3,21 @@ import React, { useEffect, useState } from 'react';
 import Web3 from 'web3';
 import Header from '../header/Header'
 import STAKING_ABI from './STAKING_ABI.json';
-import moment from 'moment';
-import LinkIcon from '@material-ui/icons/Link';
 import RadioButtonCheckedIcon from '@material-ui/icons/RadioButtonChecked';
-import OpenInNewIcon from '@material-ui/icons/OpenInNew';
-import { STAKING_ADDRESS } from '../../constants';
+import { STAKING_ADDRESS, BASE_URL } from '../../constants';
+import Event from './Event';
+import moment from 'moment';
 
-const EXAMPLE_EVENT = {
-    time: Date.now(),
-    address: "0xJUST_AN_EXAMPLE_ADDRESS",
-    stakeNum: "12345",
-    amount: 100000000000000000000000000,
-    start: 1607882427,
-    end: 1607982427,
-    shares: 110000000000000000000000000,
-    block: 1234567,
-    type: "Stake"
-}
-
+const FIVE_MINUTES = 300000;
 const LiveEvents = () => {
-    const [liveEvents, setLiveEvents] = useState([EXAMPLE_EVENT]);
-    const [pastEvents, setPastEvents] = useState([]);
-    const [connected, setConnected] = useState(null);
     const [status, setStatus] = useState('');
+    const [liveEvents, setLiveEvents] = useState([]);
+    const [connected, setConnected] = useState(null);
+
+    const [pastEvents, setPastEvents] = useState([]);
+    const [lastUpdated, setLastUpdated] = useState(Date.now());
+
+    const [pastEventsUpdater, setPastEventsUpdater] = useState(null);
 
     const _formatEvent = ev => {
         return {
@@ -42,9 +34,27 @@ const LiveEvents = () => {
         }
     }
 
+    const _getPastEvents = async (num = 10) => {
+        let res = await fetch(`${BASE_URL}/staking/latest-events/${num}`);
+        let res_json = await res.json();
+        setPastEvents(res_json);
+        setLastUpdated(Date.now())
+
+        if (!pastEventsUpdater) {
+            const updater = setInterval(async () => {
+                let res = await fetch(`${BASE_URL}/staking/latest-events/${num}`);
+                let res_json = await res.json();
+                setPastEvents(res_json);
+                setLastUpdated(Date.now())
+            }, FIVE_MINUTES)
+            setPastEventsUpdater(updater)
+        }
+    }
+
     useEffect(() => {
         const web3 = new Web3(Web3.givenProvider);
         const STAKING_CONTRACT = new web3.eth.Contract(STAKING_ABI, STAKING_ADDRESS);
+        _getPastEvents(15);
 
         STAKING_CONTRACT.events.allEvents({}, (err, ev) => {
             if(!err) {
@@ -60,6 +70,8 @@ const LiveEvents = () => {
             }
         })
         .on("connected", id => setConnected(id))
+
+        return () => { clearInterval(pastEventsUpdater) }
     }, [])
 
     const openTx = tx => window.open(`https://etherscan.io/tx/${tx}`, "_blank")
@@ -84,44 +96,24 @@ const LiveEvents = () => {
                             </Grid>
                         </Card>
 
-                        {liveEvents.map((s, idx) => (
-                            <Card key={idx} className="accordianHues" style={{ margin: '1%', padding: '1%', border: '1px solid var(--secondary-main-color)', textAlign: 'center' }} elevation={12}>
-                                <Grid container justify="space-between" alignItems="center">
-                                    <Grid container item xs={3} justify="space-between" alignItems="center">
-                                        <Grid item xs={2}>
-                                            <Typography variant="subtitle1" color="primary" style={{ fontWeight: '500' }}>{s.type}</Typography>
-                                        </Grid>
-                                        <Grid item container>
-                                            <Grid item>
-                                                <Typography variant="subtitle2" color="secondary" style={{ fontStyle: 'italic' }}>{moment(s.time).fromNow()}</Typography>
-                                            </Grid>
-                                        </Grid>
-                                    </Grid>
-                                    <Grid item xs={2}>
-                                        <Typography variant="subtitle1" color="primary">{(s.amount / 1000000000000000000).toLocaleString()} AXN</Typography>
-                                        <Typography variant="subtitle2" color="secondary">Amount</Typography>
-                                    </Grid>
-                                    <Grid item xs={2}>
-                                        <Typography variant="subtitle1" color="primary">{(s.shares / 1000000000000000000).toLocaleString()}</Typography>
-                                        <Typography variant="subtitle2" color="secondary">Shares</Typography>
-                                    </Grid>
-                                    <Grid item xs={2}>
-                                        <Typography variant="subtitle1" color="primary">{moment.unix(s.end).diff(moment.unix(s.start), 'days')}</Typography>
-                                        <Typography variant="subtitle2" color="secondary">Days</Typography>
-                                    </Grid>
-                                    <Grid item xs={1}>
-                                        <Tooltip title="View on Etherscan" classes={{ tooltip: 'tooltip' }} placement="right">
-                                            <IconButton onClick={() => openTx(s.txid)}>
-                                                <OpenInNewIcon fontSize="small" style={{ color: "var(--primary-main-color)" }} />
-                                            </IconButton>
-                                        </Tooltip>
-                                    </Grid>
-                                </Grid>
-                            </Card>
-                        ))}
+                        {liveEvents.map((s, idx) => <Event {...s} key={`live_${idx}`} />)}
                     </Grid>
                     <Grid item md={6} xs={12}>
+                        <Card className="accordianHues" style={{ padding: '1%', margin: '1%', borderRadius: '5px' }} elevation={12}>
+                            <Grid container justify="space-between" alignItems="center">
+                                <Grid item>
+                                    <Typography variant="subtitle1" color="primary" style={{ fontWeight: 'bold' }}>Past Events</Typography>
+                                    <Typography variant="subtitle2" color="secondary">Here are the most recent past events. The data automatically updates every 5 minutes.</Typography>
+                                </Grid>
+                                <Grid item>
+                                    <Tooltip title={pastEventsUpdater ? `Last updated: ${moment(lastUpdated).format("h:mm a")}` : "Getting past events..."} classes={{ tooltip: 'tooltip' }} placement="right">
+                                        <RadioButtonCheckedIcon style={{ color: pastEventsUpdater ? '#2DC574' : 'red', fontSize: '13px', cursor: 'pointer' }} />
+                                    </Tooltip>
+                                </Grid>
+                            </Grid>                          
+                        </Card>
 
+                        {pastEvents.map((s, idx) => <Event {...s} key={`past_${idx}`} />)}
                     </Grid>
                 </Grid>
             </div>
