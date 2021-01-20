@@ -134,7 +134,7 @@ const TreeStats = () => {
                     </AccordionSummary>
                     <AccordionDetails style={{ display: 'block' }}>
                         <Typography variant="subtitle2" color="primary" style={{ fontWeight: 400 }}>
-                            The numbers you see above are simply an estimate based on numbers from the blockchain.
+                            The numbers you see above are simply an estimate based on numbers from the blockchain. 
                             They are not meant to be exact stats.
                             Actual numbers will vary and can be added here if they become available.
                             The count is realtime, and will gradually change as the price of ETH changes.
@@ -145,9 +145,9 @@ const TreeStats = () => {
                             19% goes to Axion and 1% is pledged to the Eden Reforestation Project.
                         </Typography>
                         <Typography variant="subtitle2" color="primary" style={{ marginTop: '2%', fontWeight: 400 }}>
-                            To calculate, I simply take 1% of the total ETH entered into all auctions this far and convert that amount to USD.
-                            Trees are roughly $0.10 each, so some basic math and you have the answer.
-                        </Typography>
+                            To calculate, I simply take 1% of the total ETH entered into all auctions this far and convert that amount to USD. 
+                            Trees are roughly $0.10 each, so some basic math and you have the answer.       
+                        </Typography>             
                     </AccordionDetails>
                 </Accordion>
             </div>
