@@ -22,11 +22,11 @@ const Header = () => {
         document.documentElement.style.setProperty("--main-bg-color", (darkMode.value ? '#233035' : '#EAEEF7'));
         document.documentElement.style.setProperty("--primary-main-color", (darkMode.value ? '#FFFFFF' : '#00A6E8'));
         document.documentElement.style.setProperty("--text-secondary-color", (darkMode.value ? '#FFFFFF' : 'rgba(0,0,0, 0.54)'));
-        document.documentElement.style.setProperty("--card-bg-hue", (darkMode.value ? '#25353c' : '#e6eaf7'));
+        document.documentElement.style.setProperty("--card-bg-hue", (darkMode.value ? '#25353c' : '#f7faff'));
         document.documentElement.style.setProperty("--secondary-main-color", (darkMode.value ? '#FFFFFF' : '#0086CD'));
-        document.documentElement.style.setProperty("--card-accordian-hue", (darkMode.value ? '#25353c' : '#e7eaf7'));
+        document.documentElement.style.setProperty("--card-accordian-hue", (darkMode.value ? '#25353c' : '#f7faff'));
         document.documentElement.style.setProperty("--text-primary-color", (darkMode.value ? '#FFFFFF' : 'rgba(0,0,0, 0.87)'));
-        document.documentElement.style.setProperty("--stake-row-bg", (darkMode.value ? '#25353c' : '#e7eaf7'));
+        document.documentElement.style.setProperty("--stake-row-bg", (darkMode.value ? '#25353c' : '#f7faff'));
     }
     
     const theme = useTheme();
