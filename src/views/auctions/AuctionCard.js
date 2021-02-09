@@ -1,13 +1,14 @@
 import React from 'react';
 import { Card, CircularProgress, Typography } from "@material-ui/core";
-import CardBG from '../../assets/img/card_bg.jpg';
 import moment from 'moment'
+import useDarkMode from 'use-dark-mode'
 
 const AuctionCard = ({auction, loading}) => {
+    const darkMode = useDarkMode(false, { storageKey: "AxionStatsDark" });
 
     return(
-        <Card className="card cardHue" elevation={6}>
-            <img src={CardBG} width="100%" className="cardBG" alt="card background"/>
+        <Card className="card cardHue" elevation={darkMode.value ? 12 : 6}>
+            {/* <img src={CardBG} width="100%" className="cardBG" alt="card background"/> */}
 
             <div style={{ textAlign: 'center', padding: '1%' }}>           
                 <div>

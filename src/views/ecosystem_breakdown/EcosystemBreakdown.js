@@ -30,7 +30,7 @@ const EcosystemBreakdown = () => {
 
     return (
         <div style={{ padding: '2%', paddingBottom: 0 }}>
-            <Typography variant="h4" align="center" color="primary" style={{ fontWeight: '100' }}>
+            <Typography variant="h4" align="center" color="secondary" style={{ fontWeight: '100' }}>
                 Axion Ecosystem  
                 {data?.totals && (
                    <sup>
@@ -49,11 +49,11 @@ const EcosystemBreakdown = () => {
 
                     <div style={{textAlign: 'center', marginTop: '5px'}}>
                         <Tooltip title={stakedDisabled ? "Currently unavailable. API is down" : ""} classes={{tooltip: 'tooltip'}} placement="top">
-                            <FormControlLabel disabled={stakedDisabled} labelPlacement="end" control={<Checkbox color="primary" size="small" name="staked" checked={stakedChecked} onChange={onCheck} />} label={<Typography variant="subtitle2" color="textSecondary" style={{ fontWeight: '400' }} >Staked Axion</Typography>} />
+                            <FormControlLabel disabled={stakedDisabled} labelPlacement="end" control={<Checkbox color="secondary" size="small" name="staked" checked={stakedChecked} onChange={onCheck} />} label={<Typography variant="subtitle2" color="textSecondary" style={{ fontWeight: '400' }} >Staked Axion</Typography>} />
                         </Tooltip>
                         
                         <Tooltip title={circDisabled ? "Currently unavailable. API is down" : ""} classes={{tooltip: 'tooltip'}} placement="top">
-                            <FormControlLabel disabled={circDisabled} labelPlacement="end" control={<Checkbox color="primary" size="small" name="liquid" checked={circChecked} onChange={onCheck} />} label={<Typography variant="subtitle2" color="textSecondary" style={{ fontWeight: '400' }} >Liquid Axion</Typography>} />
+                            <FormControlLabel disabled={circDisabled} labelPlacement="end" control={<Checkbox color="secondary" size="small" name="liquid" checked={circChecked} onChange={onCheck} />} label={<Typography variant="subtitle2" color="textSecondary" style={{ fontWeight: '400' }} >Liquid Axion</Typography>} />
                         </Tooltip>
                     </div>
                 </>

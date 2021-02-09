@@ -1,14 +1,13 @@
 import React from 'react';
 import { Card, CircularProgress, Typography, Tooltip } from "@material-ui/core";
-import CardBG from '../../assets/img/card_bg.jpg';
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
+import useDarkMode from 'use-dark-mode'
 
 const StatCard = ({ stat, amount, suffix, percent, tooltip, loading }) => {
+    const darkMode = useDarkMode(false, { storageKey: "AxionStatsDark" });
 
     return (
-        <Card className="card cardHue" elevation={6}>
-            <img src={CardBG} width="100%" className="cardBG" alt="card background" />
-
+        <Card className="card cardHue" elevation={darkMode.value ? 12 : 6}>
             <div style={{ textAlign: 'center', padding: '1%' }}>
                 <div>
                     <Typography variant="h6" color="secondary" style={{ fontWeight: '400' }}>

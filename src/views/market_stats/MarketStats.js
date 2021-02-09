@@ -2,7 +2,7 @@ import React from 'react';
 import moment from 'moment';
 import StatCard from './MarketStatCard.js';
 import { Grid, Switch, Typography, FormControlLabel } from '@material-ui/core';
-import Logo from '../../assets/img/favicon.png';
+import Logo from '../../assets/img/logo.png';
 
 const MarketStats = ({ marketData, toggleAutoUpdating, stakingData }) => {
     return (
@@ -12,7 +12,7 @@ const MarketStats = ({ marketData, toggleAutoUpdating, stakingData }) => {
                 <img src={Logo} width={65} alt="logo"/>
             </center>
             
-            <Typography variant="h4" align="center" color="primary" style={{ fontWeight: '100' }}>Market Stats</Typography>
+            <Typography variant="h4" align="center" color="secondary" style={{ fontWeight: '100' }}>Market Stats</Typography>
 
             <center>
                 <FormControlLabel labelPlacement="start" control={<Switch size="small" checked={marketData.autoUpdating} onChange={toggleAutoUpdating} />} label={<Typography variant="subtitle2" color="textSecondary" style={{ fontWeight: '400' }}>Automatically update stats</Typography>} />

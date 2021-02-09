@@ -57,17 +57,14 @@ const LiveEvents = () => {
         _getPastEvents(15);
 
         STAKING_CONTRACT.events.allEvents({}, (err, ev) => {
-            if(!err) {
-                if (ev.event === "Stake" || ev.event === "Unstake") {
-                    console.log(ev)
+            if(!err)
+                if (ev.event === "Stake" || ev.event === "Unstake") 
                     setLiveEvents([_formatEvent(ev), ...liveEvents])
-                }
-            } else {
+            else 
                 if (err.message === "No provider set.")
                     setStatus(`${err.message} Please use a Web3 enabled browser, or enable the metamask estension.`)
                 else
                     setStatus(err.message)
-            }
         })
         .on("connected", id => setConnected(id))
 

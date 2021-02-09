@@ -161,7 +161,7 @@ const StakeExplorer = props => {
                     </Grid>
                     <br/>
                     <Divider variant="middle"/>
-                    <AppBar position="static" style={{borderRadius: '3px'}}>
+                    <AppBar position="static" color="primary" style={{borderRadius: '3px'}}>
                         <Tabs variant="fullWidth" value={tabValue} onChange={(ev, nv) => setTabValue(nv)}>
                             <Tab label="Active Stakes" />
                             <Tab label="Completed Stakes" />

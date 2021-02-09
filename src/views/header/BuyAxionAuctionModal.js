@@ -1,9 +1,10 @@
 import React from 'react';
 import CloseIcon from '@material-ui/icons/Close';
+import { AXION_ADDRESS } from '../../constants';
 import { Button, Dialog, DialogContent, Divider, IconButton, Typography } from '@material-ui/core';
 
 const BuyAxionAuctionModal = ({ isOpen, close, isDarkMode }) => {
-    const openUniswap = () => window.open("https://app.uniswap.org/#/swap?outputCurrency=0x71F85B2E46976bD21302B64329868fd15eb0D127", "_blank");
+    const openUniswap = () => window.open(`https://app.uniswap.org/#/swap?outputCurrency=${AXION_ADDRESS}`, "_blank");
     const openReferral = () => window.open("https://stake.axion.network/auction?ref=0xbE42d298d31b2551aE9E6e88B838A3ba5Dc1D6CD", "_blank");
 
     return (

@@ -23,16 +23,16 @@ const theme = createMuiTheme({
             default: "#EAEEF7"
         },
         primary: {
-            light: "#4c598e",
-            main: "#4c598e",
-            dark: "#6D7BB9",
+            light: "#00A6E8",
+            main: "#1575a9",
+            dark: "#0072BC",
             contrastText: "#fff"
         },
         secondary: {
             fontFamily: "Roberto, sans-serif",
-            light: "#8E9CDA",
-            main: "#6D7BB9",
-            dark: "#505E9B",
+            light: "#89D7F7", 
+            main: "#00AEEF", 
+            dark: "#0055A6",
             contrastText: "#fff"
         },
         error: {

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import useDarkMode from 'use-dark-mode';
 import { useHistory } from "react-router-dom";
 import MenuIcon from '@material-ui/icons/Menu';
+import { AXION_ADDRESS } from '../../constants';
 import { useTheme } from '@material-ui/core/styles';
 import BuyAxionAuctionModal from './BuyAxionAuctionModal';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
@@ -18,14 +19,14 @@ const Header = () => {
     const [modalOpen, setModalOpen] = useState(false);
     
     const toggleDarkMode = () => {
-        document.documentElement.style.setProperty("--main-bg-color", (darkMode.value ? '#232839' : '#EAEEF7'));
-        document.documentElement.style.setProperty("--primary-main-color", (darkMode.value ? 'rgb(239 232 255)' : '#4c598e'));
-        document.documentElement.style.setProperty("--text-secondary-color", (darkMode.value ? 'rgb(239 232 255)' : 'rgba(0,0,0, 0.54)'));
-        document.documentElement.style.setProperty("--card-bg-hue", (darkMode.value ? '#02104a' : '#e6eaf7'));
-        document.documentElement.style.setProperty("--secondary-main-color", (darkMode.value ? '#f1f1ff' : '#6D7BB9'));
-        document.documentElement.style.setProperty("--card-accordian-hue", (darkMode.value ? '#46507b' : '#e7eaf7'));
-        document.documentElement.style.setProperty("--text-primary-color", (darkMode.value ? 'rgba(255,255,255, 0.87)' : 'rgba(0,0,0, 0.87)'));
-        document.documentElement.style.setProperty("--stake-row-bg", (darkMode.value ? '#33384c' : '#e7eaf7'));
+        document.documentElement.style.setProperty("--main-bg-color", (darkMode.value ? '#233035' : '#EAEEF7'));
+        document.documentElement.style.setProperty("--primary-main-color", (darkMode.value ? '#FFFFFF' : '#00A6E8'));
+        document.documentElement.style.setProperty("--text-secondary-color", (darkMode.value ? '#FFFFFF' : 'rgba(0,0,0, 0.54)'));
+        document.documentElement.style.setProperty("--card-bg-hue", (darkMode.value ? '#25353c' : '#e6eaf7'));
+        document.documentElement.style.setProperty("--secondary-main-color", (darkMode.value ? '#FFFFFF' : '#0086CD'));
+        document.documentElement.style.setProperty("--card-accordian-hue", (darkMode.value ? '#25353c' : '#e7eaf7'));
+        document.documentElement.style.setProperty("--text-primary-color", (darkMode.value ? '#FFFFFF' : 'rgba(0,0,0, 0.87)'));
+        document.documentElement.style.setProperty("--stake-row-bg", (darkMode.value ? '#25353c' : '#e7eaf7'));
     }
     
     const theme = useTheme();
@@ -50,10 +51,10 @@ const Header = () => {
                 params: {
                     'type': 'ERC20',
                     'options': {
-                        'address': "0x71F85B2E46976bD21302B64329868fd15eb0D127",
+                        'address': AXION_ADDRESS,
                         'symbol': "AXN",
                         'decimals': 18,
-                        'image': 'https://axionstats.info/img/axion-icon.svg',
+                        'image': 'https://axionstats.info/img/logo.png',
                     },
                 }
             })

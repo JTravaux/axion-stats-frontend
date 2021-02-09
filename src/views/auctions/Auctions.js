@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import moment from 'moment';
 import Header from '../header/Header.js';
-import { CircularProgress, Grid, Typography } from '@material-ui/core';
+import { Card, CircularProgress, Grid, Typography } from '@material-ui/core';
 import useAuctionData from '../../hooks/useAuctionData.js';
 import { useSortBy, useTable, usePagination } from 'react-table';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
@@ -67,7 +67,7 @@ const Auctions = () => {
 
             {/* C U R R E N T  */}
             <div style={{ margin: '2% auto' }}>
-                <Typography variant="h4" align="center" color="primary" style={{ fontWeight: '100' }}>Today's Auction</Typography>
+                <Typography variant="h4" align="center" color="secondary" style={{ fontWeight: '100' }}>Today's Auction</Typography>
                 <Typography color="textPrimary" variant="subtitle2" style={{ fontWeight: 100 }} align="center">Last Updated: {moment(currentAuction.timestamp).format("MMM Do, YYYY h:mm a")}</Typography>
             </div>
 
@@ -85,90 +85,81 @@ const Auctions = () => {
                 </Grid>
             </div>
 
-            {!isMobile && (<>
-                <div style={{ margin: '2% auto' }}>
-                    <Typography variant="h4" align="center" color="primary" style={{ fontWeight: '100' }}>Auction History</Typography>
-                    <Typography variant="subtitle2" color="textSecondary" style={{ fontWeight: '400' }} align="center">Below is a sortable table containing all past Axion auctions.</Typography>
-                    <Typography variant="subtitle2" color="textSecondary" style={{ fontWeight: '400' }} align="center">Mega auctions have a different row color, and today's auction has a unique border.</Typography>
-                </div>
+            <div style={{ margin: '2% auto' }}>
+                <Typography variant="h4" align="center" color="secondary" style={{ fontWeight: '100' }}>Past/Future Auctions</Typography>
+                <Typography variant="subtitle2" color="textSecondary" style={{ fontWeight: '400' }} align="center">Below is a sortable table containing all past Axion auctions along with tomorrow's.</Typography>
+            </div>
 
-                <div style={{ padding: '0 2%', margin: '0 auto', marginBottom: '2%' }}>
-                    {/* H E A D E R */}
-                    {headerGroups.map(({ headers }) => (
-                        <Grid container key="container" justify="space-between" className="tableControls">
-                            {headers.map((header, idx) => (
-                                <Grid item container direction="row" xs={2} key={header + " " + idx} alignItems="center" justify="center">
+            <div style={{ padding: '0 2%', margin: '0 auto', marginBottom: '2%' }}>
+                {/* H E A D E R */}
+                {headerGroups.map(({ headers }) => (
+                    <Grid container key="container" justify="space-between" className="tableControls">
+                        {headers.map((header, idx) => (
+                            <Grid item container direction="row" xs={2} key={header + " " + idx} alignItems="center" justify="center">
+                                <Grid item>
+                                    <Typography variant="subtitle1" {...header.getHeaderProps(header.getSortByToggleProps())} style={{ color: '#FFF', cursor: 'pointer' }} >{header.Header}</Typography>
+                                </Grid>
+
+                                {!isMobile && (
                                     <Grid item>
-                                        <Typography variant="subtitle1" {...header.getHeaderProps(header.getSortByToggleProps())} style={{ color: '#FFF', cursor: 'pointer' }} >{header.Header}</Typography>
+                                        {header.isSorted
+                                            ? header.isSortedDesc
+                                                ? <KeyboardArrowDownIcon style={{ fontSize: '20px', marginLeft: '5px', color: "#FFF" }} />
+                                                : <KeyboardArrowUpIcon style={{ fontSize: '20px', marginLeft: '5px', color: "#FFF" }} />
+                                            : ''}
                                     </Grid>
+                                )}
+                            </Grid>
+                        ))}
+                    </Grid>
+                ))}
 
-                                    {!isMobile && (
-                                        <Grid item>
-                                            {header.isSorted
-                                                ? header.isSortedDesc
-                                                    ? <KeyboardArrowDownIcon style={{ fontSize: '20px', marginLeft: '5px', color: "#FFF" }} />
-                                                    : <KeyboardArrowUpIcon style={{ fontSize: '20px', marginLeft: '5px', color: "#FFF" }} />
-                                                : ''}
-                                        </Grid>
-                                    )}
+                {/* A U C T I O N S */}
+                {auctions.length === 0 && (
+                    <div style={{ margin: '5% auto' }}>
+                        <center>
+                            <CircularProgress color="primary" size={30} />
+                        </center>
+                    </div>
+                )}
+
+                {auctions.length > 0 && page.map((row, idx) => {
+                    prepareRow(row)
+                    const NOW = Date.now()
+                    const CURRENT = NOW > Number(row.values.start) * 1000 && NOW < Number(row.values.end) * 1000;
+                    return (
+                        <Card elevation={6} key={row.id} className="stakeRow" style={{ margin: '1% 0', borderRadius: '5px', backgroundColor: 'rgba(0,0,0,0.05)', border: CURRENT ? "2px solid var(--primary-main-color)" : "" }}>
+                            <Grid container justify="space-between" key={row.id} alignItems="center">
+                                <Grid item xs={2}>
+                                    <Typography color="textPrimary" variant="subtitle2" align="center">{row.values.id}</Typography>
                                 </Grid>
-                            ))}
-                        </Grid>
-                    ))}
-
-                    {/* A U C T I O N S */}
-                    {auctions.length === 0 && (
-                        <div style={{ margin: '5% auto' }}>
-                            <center>
-                                <CircularProgress color="primary" size={30} />
-                            </center>
-                        </div>
-                    )}
-
-                    {auctions.length > 0 && page.map((row, idx) => {
-                        prepareRow(row)
-                        const NOW = Date.now()
-                        const CURRENT = NOW > Number(row.values.start) * 1000 && NOW < Number(row.values.end) * 1000;
-                        return (
-                            <div key={row.id} className="auctionTableRow" style={{ backgroundColor: row.original.isWeekly ? "rgba(103, 126, 218, 0.35)" : 'rgba(103, 126, 218, 0.1)', border: CURRENT ? '1px solid var(--primary-main-color)' : '' }}>
-                                <Grid container justify="space-between" key={row.id} alignItems="center">
-                                    <Grid item xs={2}>
-                                        <Typography color="textPrimary" variant="subtitle2" align="center">{row.values.id}</Typography>
-                                    </Grid>
-                                    <Grid item xs={2}>
-                                        <Typography color="textPrimary" variant="subtitle2" align="center">
-                                            {isMobile ? moment.unix(row.values.start).format("MM/DD/YYYY") : moment.unix(row.values.start).format("MMM Do, YYYY h:mm a")}
-                                        </Typography>
-                                    </Grid>
-                                    <Grid item xs={2}>
-                                        <Typography color="textPrimary" variant="subtitle2" align="center">
-                                            {isMobile ? moment.unix(row.values.end).format("MM/DD/YYYY") : moment.unix(row.values.end).format("MMM Do, YYYY h:mm a")}
-                                        </Typography>
-                                    </Grid>
-                                    <Grid item xs={2}>
-                                        <Typography color="textPrimary" variant="subtitle2" align="center">
-                                            {isMobile ? Math.round(row.values.axn).toLocaleString() : row.values.axn.toLocaleString()}
-                                        </Typography>
-                                    </Grid>
-                                    <Grid item xs={2}>
-                                        <Typography color="textPrimary" variant="subtitle2" align="center">
-                                            {isMobile ? Number(row.values.eth).toFixed(1).toLocaleString() : row.values.eth.toLocaleString()}
-                                        </Typography>
-                                    </Grid>
+                                <Grid item xs={2}>
+                                    <Typography color="textPrimary" variant="subtitle2" align="center">
+                                        {isMobile ? moment.unix(row.values.start).format("MM/DD/YYYY") : moment.unix(row.values.start).format("MMM Do, YYYY h:mm a")}
+                                    </Typography>
                                 </Grid>
-                            </div>
-                        )
-                    })}
+                                <Grid item xs={2}>
+                                    <Typography color="textPrimary" variant="subtitle2" align="center">
+                                        {isMobile ? moment.unix(row.values.end).format("MM/DD/YYYY") : moment.unix(row.values.end).format("MMM Do, YYYY h:mm a")}
+                                    </Typography>
+                                </Grid>
+                                <Grid item xs={2}>
+                                    <Typography color="textPrimary" variant="subtitle2" align="center">
+                                        {isMobile ? Math.round(row.values.axn).toLocaleString() : row.values.axn.toLocaleString()}
+                                    </Typography>
+                                </Grid>
+                                <Grid item xs={2}>
+                                    <Typography color="textPrimary" variant="subtitle2" align="center">
+                                        {isMobile ? Number(row.values.eth).toFixed(1).toLocaleString() : row.values.eth.toLocaleString()}
+                                    </Typography>
+                                </Grid>
+                            </Grid>
+                        </Card>
+                    )
+                })}
 
-                    <TableControls {...tableProps} />
-                </div>
-            </>)}
-
-            {isMobile && (
-                <div style={{margin: '5%', border: '1px solid rgba(0,0,0,0.3)', padding: '2%', borderRadius: '5px'}}>
-                    <Typography color="textPrimary" variant="subtitle2" align="center">Auction history coming soon™ to mobile.</Typography>
-                </div>
-            )}
+                <TableControls {...tableProps} />
+            </div>
         </div>
     )
 }

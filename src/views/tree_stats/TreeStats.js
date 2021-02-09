@@ -41,7 +41,7 @@ const TreeStats = () => {
 
     return (
         <div style={{ padding: '2%', paddingBottom: 0 }}>            
-            <Typography variant="h4" align="center" color="primary" style={{ fontWeight: '100' }}>Axion's Tree Pledge</Typography>
+            <Typography variant="h4" align="center" color="secondary" style={{ fontWeight: '100' }}>Axion's Tree Pledge</Typography>
          
             <div style={{ width: isSmall ? '80%' : (isMedium ? '60%' : '40%'), margin: '2% auto'}}>
                 <Card className="card accordianHues" elevation={6}>

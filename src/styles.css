@@ -1,7 +1,7 @@
 :root {
   --main-bg-color: #EAEEF7;
-  --primary-main-color:#4c598e;
-  --secondary-main-color:#6D7BB9;
+  --primary-main-color:#1575a9;
+  --secondary-main-color:#00AEEF;
   --font-family: 'Poppins', sans-serif;
   --text-secondary-color: rgba(0,0,0, 0.54);
   --card-bg-hue: #e6eaf7;
@@ -53,7 +53,7 @@ body {
   margin: 1% 0;
   padding: 0.25% 0.5%;
   border: 1px solid rgba(0,0,0, 0.25);
-  background-color: #4C598E;
+  background-color: #0072BC;
   border-radius: 10px;
 }
 .auctionTableRow {
@@ -100,7 +100,7 @@ body {
   height: 2px;
   left: 50%;
   position: absolute;
-  background: var(--secondary-main-color);
+  background: var(--card-accordian-hue);
   transition: width 0.3s ease 0s, left 0.3s ease 0s;
   width: 0;
 }

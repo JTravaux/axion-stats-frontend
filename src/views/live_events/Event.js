@@ -20,11 +20,11 @@ const Event = ({ type, time, amount, shares, end, start, txID, block }) => {
                     </Grid>
                 </Grid>
                 <Grid item xs={2}>
-                    <Typography variant="subtitle1" color="primary">{(amount / 1000000000000000000).toLocaleString()} AXN</Typography>
-                    <Typography variant="subtitle2" color="secondary">Amount</Typography>
+                    <Typography variant="subtitle1" color="primary">{(Math.floor(amount / 1000000000000000000)).toLocaleString()}</Typography>
+                    <Typography variant="subtitle2" color="secondary">AXN</Typography>
                 </Grid>
                 <Grid item xs={2}>
-                    <Typography variant="subtitle1" color="primary">{(shares / 1000000000000000000).toLocaleString()}</Typography>
+                    <Typography variant="subtitle1" color="primary">{(Math.floor(shares / 1000000000000000000)).toLocaleString()}</Typography>
                     <Typography variant="subtitle2" color="secondary">Shares</Typography>
                 </Grid>
                 <Grid item xs={2}>

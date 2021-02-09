@@ -8,14 +8,14 @@ const StakingStats = ({ stakingData, loading, supply, actualSupply }) => {
 
     return (
         <div style={{ padding: '2%', paddingBottom: 0 }}>
-            <Typography variant="h4" align="center" color="primary" style={{ fontWeight: '100' }}>Staking Stats</Typography>
+            <Typography variant="h4" align="center" color="secondary" style={{ fontWeight: '100' }}>Staking Stats</Typography>
             {stakingData.timestamp && (
                 <>
                     <center>
                         <FormControlLabel
                             disabled={!actualSupply}
                             labelPlacement="start"
-                            control={<Switch size="small" checked={isAdjusted} onChange={ev => setIsAdjusted(ev.target.checked)} />}
+                            control={<Switch color="secondary" size="small" checked={isAdjusted} onChange={ev => setIsAdjusted(ev.target.checked)} />}
                             label={<Typography variant="subtitle2" color="textSecondary" style={{ fontWeight: '400' }}>Include dev fund &amp; contracts</Typography>}
                         />
                     </center>

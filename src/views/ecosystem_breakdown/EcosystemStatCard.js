@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, CircularProgress, Divider, Typography } from "@material-ui/core";
-import CardBG from '../../assets/img/card_bg.jpg';
+import useDarkMode from 'use-dark-mode'
 
 const AMOUNTS = {
     "Shrimp": {min: 1, max: 999, seperator: " to " },
@@ -14,10 +14,11 @@ const AMOUNTS = {
 }
 
 const StatCard = ({ type, count, loading, emoji, isImage, src, imgWidth, total, ecoAxion, holders }) => {
+    const darkMode = useDarkMode(false, { storageKey: "AxionStatsDark" });
 
     return(
-        <Card className="card cardHue" elevation={6}>
-            <img src={CardBG} width="100%" className="cardBG" alt="card background" />
+        <Card className="card cardHue" elevation={darkMode.value ? 12 : 6}>
+            {/* <img src={CardBG} width="100%" className="cardBG" alt="card background" /> */}
 
             <div style={{ textAlign: 'center', padding: '1%' }}>
                 <div style={{margin: '1%'}}>
