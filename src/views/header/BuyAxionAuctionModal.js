@@ -20,7 +20,7 @@ const BuyAxionAuctionModal = ({ isOpen, close, isDarkMode }) => {
             </div>
 
             <DialogContent>
-                <Typography variant="subtitle1" color="textSecondary">By purchasing Axion from the daily auction using my link, you will get a <strong>10% bonus</strong>. Axion from the auction will be automatically staked for 60 days and you must manually claim it afterwards.</Typography>
+                <Typography variant="subtitle1" color="textSecondary">By purchasing Axion from the daily auction using my link, you will get a <strong>10% bonus</strong>. Axion from the auction will be automatically staked for 14 days and you must manually claim it afterwards.</Typography>
                 <br />
                 <Typography variant="subtitle1" color="textSecondary">Example: If you receive 100,000 AXN from the auction, you will earn a bonus of 10,000 AXN. You will get the total of 110,000 AXN along with any rewards from the stake after you claim it.</Typography>
                 <br />
