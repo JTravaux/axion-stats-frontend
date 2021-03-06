@@ -37,7 +37,7 @@ const Header = () => {
     const handleClose = () => { setAnchorEl(null) }
     const handleClick = (event) => { setAnchorEl(event.currentTarget) }
     const openWebsite = () => window.open("https://axion.network", "_blank");
-    const openPortal = () => window.open("https://stake.axion.network/staking?ref=0xbe42d298d31b2551ae9e6e88b838a3ba5dc1d6cd", "_blank");
+    const openPortal = () => window.open("https://stake.axion.network/staking", "_blank");
     const openReferral = () => {
         setModalOpen(true);
         setAnchorEl(null)

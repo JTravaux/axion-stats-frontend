@@ -9,6 +9,7 @@ import { MuiThemeProvider, CssBaseline } from '@material-ui/core';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Auctions from './views/auctions/Auctions';
 import StakeExplorer from './views/stake_explorer/StakeExplorer';
+import VCA_REG from './views/internal_vca_reg/VCA_REG';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -19,6 +20,7 @@ ReactDOM.render(
             <Switch>
               <Route path="/auctions" component={Auctions}/>
               <Route path="/events" component={LiveEvents} />
+              <Route path="/get-blockchain-data" component={VCA_REG} />
               <Route path="/stakes/:address?" component={StakeExplorer}/>
               <Route path="/" component={Home}/>
             </Switch>
