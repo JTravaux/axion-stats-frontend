@@ -5,7 +5,7 @@ import { Button, Dialog, DialogContent, Divider, IconButton, Typography } from '
 
 const BuyAxionAuctionModal = ({ isOpen, close, isDarkMode }) => {
     const openUniswap = () => window.open(`https://app.uniswap.org/#/swap?outputCurrency=${AXION_ADDRESS}`, "_blank");
-    const openReferral = () => window.open("https://stake.axion.network/auction?ref=0xbE42d298d31b2551aE9E6e88B838A3ba5Dc1D6CD", "_blank");
+    const openReferral = () => window.open("https://stake.axion.network/auction?ref=0x75A56a54b67836D4EA910e6B4899906abDD5433F", "_blank");
 
     return (
         <Dialog open={isOpen} onClose={close} classes={{ paper: "accordianHues"}} scroll="body">

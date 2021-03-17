@@ -5,7 +5,7 @@ import useMarketData from '../../hooks/useMarketData';
 
 const OFFICIAL_LINKS = [
     { link: "https://axion.network/", title: "Homepage" },
-    { link: "https://stake.axion.network/staking?ref=0xbe42d298d31b2551ae9e6e88b838a3ba5dc1d6cd", title: "Staking Portal" },
+    { link: "https://stake.axion.network/staking?ref=0x75A56a54b67836D4EA910e6B4899906abDD5433F", title: "Staking Portal" },
     { link: "https://axion.network/pdf/axion-whitepaper.pdf", title: "Whitepaper" },
     { link: "https://axion.network/pdf/axion-audit.pdf", title: "Hacken Audit" },
     { link: "https://axion.network/pdf/certik-audit-report.pdf", title: "Certik Audit" },
