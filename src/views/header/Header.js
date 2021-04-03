@@ -54,7 +54,7 @@ const Header = () => {
                         'address': AXION_ADDRESS,
                         'symbol': "AXN",
                         'decimals': 18,
-                        'image': 'https://axionstats.info/img/logo.png',
+                        'image': 'https://stake.axion.network/metamask-axn-logo.png',
                     },
                 }
             })
