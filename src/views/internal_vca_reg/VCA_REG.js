@@ -120,7 +120,7 @@ const VCA_REG = () => {
         contract,
         startBlock = 11472615, // v2 start
         endBlock = "latest",
-        step = 10000,
+        step = 1000,
     ) => {
         let fromBlock = startBlock;
         let toBlock = endBlock;
