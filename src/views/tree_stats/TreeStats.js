@@ -86,25 +86,6 @@ const TreeStats = () => {
                         </div>)}
                     </div>
                 </Card>
-
-                <Accordion className="accordianHues" elevation={6} style={{ marginTop: '2%' }}>
-                    <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-                        <Typography variant="subtitle1" color="textPrimary">About this Count</Typography>
-                    </AccordionSummary>
-                    <AccordionDetails style={{ display: 'block' }}>
-                        <Typography variant="subtitle2" color="primary" style={{ fontWeight: 400 }}>
-                            The numbers you see above are simply an estimate based on numbers from the blockchain. 
-                            They are not meant to be exact stats.
-                            Actual numbers will vary.
-                            The count is realtime, and will gradually change as the price of ETH changes.
-                        </Typography>
-                        <Typography variant="subtitle1" color="primary" style={{ marginTop: '2%' }}>How is this calculated?</Typography>
-                        <Typography variant="subtitle2" color="primary" style={{ marginTop: '2%', fontWeight: 400 }}>
-                            For every deposit into Axion's daily or weekly auction, 80% of the ETH gets used to buyback and distribute AXN to stakers,
-                            19% goes to Axion and 1% is pledged to the Eden Reforestation Project. Just $0.10 plants a tree.
-                        </Typography>
-                    </AccordionDetails>
-                </Accordion>
             </div>
 
          

@@ -39,7 +39,7 @@ const Home = () => {
             <div style={{ margin: '1%', textAlign: 'right', marginTop: 0, opacity: 0.85 }}>
                 <Typography variant="subtitle2" color="textPrimary" style={{ fontWeight: 200 }}>{VERSION} ✳️</Typography>
                 <Typography variant="subtitle2" color="textPrimary" style={{ fontWeight: 200 }}>By Some Greenish Guy</Typography>
-                <Typography variant="subtitle2" color="textSecondary" style={{ fontWeight: 200 }}>Unofficial Stats, I'm just an investor</Typography>
+                <Typography variant="subtitle2" color="textSecondary" style={{ fontWeight: 200 }}>Unofficial Stats</Typography>
             </div>
         </div>
     )
