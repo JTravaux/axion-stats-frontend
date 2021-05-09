@@ -123,6 +123,8 @@ const Header = () => {
                                     <MenuItem style={{ color: "#FFF" }} onClick={darkMode.toggle}>{darkMode.value ? <Brightness5Icon /> : <Brightness2Icon />}&nbsp;{darkMode.value ? "Light" : "Dark"} Mode</MenuItem>
 
                                     <MenuItem style={{ color: "rgb(255 126 235)", fontWeight: 'bold'}} onClick={openReferral}>Buy Axion - 10% Bonus</MenuItem>
+                                    <MenuItem style={{ color: "#ca7505", fontWeight: 'bold'}} onClick={openConnect}>Axion Credit Card</MenuItem>
+
                                 </Menu>
                             </>)}
                         </Grid>
