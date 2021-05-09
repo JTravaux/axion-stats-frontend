@@ -145,10 +145,16 @@ body {
   color: var(--secondary-main-color);
 }
 
+.connectButton {
+  background-color: #F18A00 !important;  
+}
+
+.connectButton:hover{
+  background-color: #ca7505 !important;
+}
+
 .referralButton {
-  margin-left: 15px !important;
-  background-color: #bb40a8 !important;
-  
+  background-color: #bb40a8 !important;  
 }
 
 .referralButton:hover {

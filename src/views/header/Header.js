@@ -10,14 +10,16 @@ import Brightness5Icon from '@material-ui/icons/Brightness5';
 import Brightness2Icon from '@material-ui/icons/Brightness2';
 import metamaskLogo from '../../assets/img/metamask-logo.png';
 import { Typography, AppBar, Toolbar, IconButton, Grid, Menu, MenuItem, Button, Tooltip } from '@material-ui/core';
+import ConnectFinancialModal from './ConnectFinancialModal';
 
 const DARK_MODE_KEY = "AxionStatsDark";
 const isDarkModeEnabled = true;
 
 const Header = () => {
     const [anchorEl, setAnchorEl] = useState(null);
-    const [modalOpen, setModalOpen] = useState(false);
-    
+    const [refModalOpen, setRefModalOpen] = useState(false);
+    const [connectModalOpen, setConnectModalOpen] = useState(false);
+
     const toggleDarkMode = () => {
         document.documentElement.style.setProperty("--main-bg-color", (darkMode.value ? '#233035' : '#EAEEF7'));
         document.documentElement.style.setProperty("--primary-main-color", (darkMode.value ? '#FFFFFF' : '#00A6E8'));
@@ -39,9 +41,14 @@ const Header = () => {
     const openWebsite = () => window.open("https://axion.network", "_blank");
     const openPortal = () => window.open("https://stake.axion.network/staking", "_blank");
     const openReferral = () => {
-        setModalOpen(true);
+        setRefModalOpen(true);
         setAnchorEl(null)
     }
+    const openConnect = () => {
+        setConnectModalOpen(true);
+        setAnchorEl(null)
+    }
+
 
     const addToMM = () => {
         if(window.ethereum) {
@@ -67,7 +74,7 @@ const Header = () => {
             <AppBar position="static" className="navBar" elevation={10} >
                 <Toolbar>
                     {!isSmall && isDarkModeEnabled && (
-                        <Tooltip classes={{ tooltip: 'tooltip' }} title={`Switch to ${darkMode.value ? "light" : "dark"} theme (beta™)`} placement="left">
+                        <Tooltip classes={{ tooltip: 'tooltip' }} title={`Switch to ${darkMode.value ? "light" : "dark"} theme™`} placement="left">
                             <div style={{ cursor: 'pointer', position: 'absolute', right: 12 }} onClick={darkMode.toggle}>
                                 {darkMode.value ? <Brightness5Icon /> : <Brightness2Icon />}
                             </div>
@@ -89,8 +96,12 @@ const Header = () => {
                                         Add to MM
                                     </Typography>
 
-                                    <Button onClick={openReferral} variant="contained" color="secondary" className="referralButton">
+                                    <Button onClick={openReferral} variant="contained" color="secondary" className="referralButton" style={{marginLeft: '15px'}}>
                                         <Typography variant="subtitle2">Buy Axion, Get 10% Bonus</Typography>
+                                    </Button>
+
+                                    <Button onClick={openConnect} variant="contained" color="secondary" className="connectButton" style={{marginLeft: '15px'}}>
+                                        <Typography variant="subtitle2">Axion Credit Card</Typography>
                                     </Button>
                                   
                                 </div>
@@ -120,7 +131,8 @@ const Header = () => {
                 </Toolbar>
             </AppBar>
 
-            <BuyAxionAuctionModal isOpen={modalOpen} close={() => setModalOpen(false)} isDarkMode={darkMode.value}/>
+            <BuyAxionAuctionModal isOpen={refModalOpen} close={() => setRefModalOpen(false)} isDarkMode={darkMode.value}/>
+            <ConnectFinancialModal isOpen={connectModalOpen} close={() => setConnectModalOpen(false)} isDarkMode={darkMode.value}/>
         </div>
     )
 }

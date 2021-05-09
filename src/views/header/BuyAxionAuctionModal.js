@@ -28,7 +28,7 @@ const BuyAxionAuctionModal = ({ isOpen, close, isDarkMode }) => {
             </DialogContent>
             
             <div style={{margin: '2% auto', width: '85%'}}>
-                <Button variant="contained" color="secondary" className="referralButton" onClick={openReferral} autoFocus style={{ textTransform: 'none', margin: '0 !important', width: '94%'}}>
+                <Button variant="contained" color="secondary" className="referralButton" onClick={openReferral} autoFocus style={{ textTransform: 'none'}} fullWidth>
                     Buy From Auction &amp; Get 10% Bonus AXN
                 </Button>
                 <Button fullWidth onClick={openUniswap} style={{ textTransform: 'none', color: 'var(--text-primary-color)'}}>Buy From Uniswap Instead, Instantly</Button>
