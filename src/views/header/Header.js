@@ -4,20 +4,18 @@ import { useHistory } from "react-router-dom";
 import MenuIcon from '@material-ui/icons/Menu';
 import { AXION_ADDRESS } from '../../constants';
 import { useTheme } from '@material-ui/core/styles';
-import BuyAxionAuctionModal from './BuyAxionAuctionModal';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import Brightness5Icon from '@material-ui/icons/Brightness5';
 import Brightness2Icon from '@material-ui/icons/Brightness2';
 import metamaskLogo from '../../assets/img/metamask-logo.png';
-import { Typography, AppBar, Toolbar, IconButton, Grid, Menu, MenuItem, Button, Tooltip } from '@material-ui/core';
 import ConnectFinancialModal from './ConnectFinancialModal';
+import { Typography, AppBar, Toolbar, IconButton, Grid, Menu, MenuItem, Button, Tooltip } from '@material-ui/core';
 
 const DARK_MODE_KEY = "AxionStatsDark";
 const isDarkModeEnabled = true;
 
 const Header = () => {
     const [anchorEl, setAnchorEl] = useState(null);
-    const [refModalOpen, setRefModalOpen] = useState(false);
     const [connectModalOpen, setConnectModalOpen] = useState(false);
 
     const toggleDarkMode = () => {
@@ -40,15 +38,10 @@ const Header = () => {
     const handleClick = (event) => { setAnchorEl(event.currentTarget) }
     const openWebsite = () => window.open("https://axion.network", "_blank");
     const openPortal = () => window.open("https://stake.axion.network/staking", "_blank");
-    const openReferral = () => {
-        setRefModalOpen(true);
-        setAnchorEl(null)
-    }
     const openConnect = () => {
         setConnectModalOpen(true);
         setAnchorEl(null)
     }
-
 
     const addToMM = () => {
         if(window.ethereum) {
@@ -96,10 +89,6 @@ const Header = () => {
                                         Add to MM
                                     </Typography>
 
-                                    <Button onClick={openReferral} variant="contained" color="secondary" className="referralButton" style={{marginLeft: '15px'}}>
-                                        <Typography variant="subtitle2">Buy Axion, Get 10% Bonus</Typography>
-                                    </Button>
-
                                     <Button onClick={openConnect} variant="contained" color="secondary" className="connectButton" style={{marginLeft: '15px'}}>
                                         <Typography variant="subtitle2">Axion Credit Card</Typography>
                                     </Button>
@@ -116,15 +105,11 @@ const Header = () => {
                                     <MenuItem style={{ color: "#FFF" }} onClick={() => history.push("/")}>Home</MenuItem>
                                     <MenuItem style={{ color: "#FFF" }} onClick={() => history.push("/auctions")}>Auctions</MenuItem>
                                     <MenuItem style={{ color: "#FFF" }} onClick={() => history.push("/stakes")}>Stake Explorer</MenuItem>
-
                                     <MenuItem style={{color: "#FFF"}} onClick={openWebsite}>Axion Website</MenuItem>
                                     <MenuItem style={{color: "#FFF"}} onClick={openPortal}>Staking Portal</MenuItem>
                                     <MenuItem style={{ color: "#FFF" }} onClick={addToMM}><img alt="metamask logo" src={metamaskLogo} width={20} />&nbsp;Add to MetaMask</MenuItem>
                                     <MenuItem style={{ color: "#FFF" }} onClick={darkMode.toggle}>{darkMode.value ? <Brightness5Icon /> : <Brightness2Icon />}&nbsp;{darkMode.value ? "Light" : "Dark"} Mode</MenuItem>
-
-                                    <MenuItem style={{ color: "rgb(255 126 235)", fontWeight: 'bold'}} onClick={openReferral}>Buy Axion - 10% Bonus</MenuItem>
                                     <MenuItem style={{ color: "#F18A00", fontWeight: 'bold'}} onClick={openConnect}>Axion Credit Card</MenuItem>
-
                                 </Menu>
                             </>)}
                         </Grid>
@@ -133,7 +118,6 @@ const Header = () => {
                 </Toolbar>
             </AppBar>
 
-            <BuyAxionAuctionModal isOpen={refModalOpen} close={() => setRefModalOpen(false)} isDarkMode={darkMode.value}/>
             <ConnectFinancialModal isOpen={connectModalOpen} close={() => setConnectModalOpen(false)} isDarkMode={darkMode.value}/>
         </div>
     )
