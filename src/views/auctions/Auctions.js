@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import moment from 'moment';
 import Header from '../header/Header.js';
-import { Card, CircularProgress, Grid, Typography } from '@material-ui/core';
+import { Button, Card, CircularProgress, Grid, Typography } from '@material-ui/core';
 import useAuctionData from '../../hooks/useAuctionData.js';
 import { useSortBy, useTable, usePagination } from 'react-table';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
@@ -67,27 +67,25 @@ const Auctions = () => {
 
             {/* C U R R E N T  */}
             <div style={{ margin: '2% auto' }}>
-                <Typography variant="h4" align="center" color="secondary" style={{ fontWeight: '100' }}>Today's Auction</Typography>
-                <Typography color="textPrimary" variant="subtitle2" style={{ fontWeight: 100 }} align="center">Last Updated: {moment(currentAuction.timestamp).format("MMM Do, YYYY h:mm a")}</Typography>
+                <Typography variant="h4" align="center" color="secondary" style={{ fontWeight: '100' }}>Axion Accelerator</Typography>
+                <Typography color="textPrimary" variant="subtitle2" style={{ fontWeight: 100 }} align="center">
+                    It’s time for the evolution of the Axion auction system.
+                    <br />
+                    It’s time to upgrade the auctions with a new system that fits into the ethos of Axion.
+                    <br />
+                    It’s time… for the Axion Accelerator.
+                </Typography>
             </div>
 
             <div style={{ margin: '2%' }}>
-                <Grid container spacing={3} justify="center">
-                    <Grid item lg={4} md={6} xs={10}>
-                        <StatCard stat="AXN Pool" amount={currentAuction.axn} suffix="AXN" loading={!currentAuction.axn} />
-                    </Grid>
-                    <Grid item lg={4} md={6} xs={10}>
-                        <StatCard stat="ETH Pool" amount={currentAuction.eth} suffix="ETH" loading={!currentAuction.eth} />
-                    </Grid>
-                    <Grid item lg={4} md={6} xs={10}>
-                        <StatCard stat="Next Weekly Auction" amount={currentAuction.next_weekly} suffix="AXN" loading={!currentAuction.next_weekly} />
-                    </Grid>
-                </Grid>
+                <center>
+                    <Button onClick={() => window.open('https://axion.network/how-to-buy-axion/accelerator')} variant="outlined">Visit the Axion Accelerator</Button>
+                </center>
             </div>
 
             <div style={{ margin: '2% auto' }}>
-                <Typography variant="h4" align="center" color="secondary" style={{ fontWeight: '100' }}>Past/Future Auctions</Typography>
-                <Typography variant="subtitle2" color="textSecondary" style={{ fontWeight: '400' }} align="center">Below is a sortable table containing all past Axion auctions along with tomorrow's.</Typography>
+                <Typography variant="h4" align="center" color="secondary" style={{ fontWeight: '100' }}>Legacy Auctions</Typography>
+                <Typography variant="subtitle2" color="textSecondary" style={{ fontWeight: '400' }} align="center">Below is a sortable table containing all past Axion auctions before the Accelerator.</Typography>
             </div>
 
             <div style={{ padding: '0 2%', margin: '0 auto', marginBottom: '2%' }}>

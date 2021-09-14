@@ -82,7 +82,7 @@ const Header = () => {
                             {!isSmall && (
                                 <div className="headerLinks" style={{marginRight: isDarkModeEnabled ? '25px' : 0}}>
                                     <Typography onClick={() => history.push("/")} variant="subtitle2" style={{ color: "#FFF" }} display="inline" className="clickableLink noselect">Stats</Typography>
-                                    <Typography onClick={() => history.push("/auctions")} variant="subtitle2" style={{ color: "#FFF" }} display="inline" className="clickableLink noselect">Auctions</Typography>
+                                    <Typography onClick={() => window.open('https://axion.network/how-to-buy-axion/accelerator')} variant="subtitle2" style={{ color: "#FFF" }} display="inline" className="clickableLink noselect">Acceleratror</Typography>
                                     <Typography onClick={() => history.push("/stakes")} variant="subtitle2" style={{ color: "#FFF" }} display="inline" className="clickableLink noselect">Stakes</Typography>
                                     <Typography onClick={openPortal} variant="subtitle2" style={{ color: "#FFF" }} display="inline" className="clickableLink noselect">Stake AXN</Typography>
                                     <Typography onClick={addToMM} variant="subtitle2" style={{ color: "#FFF" }} display="inline" className="clickableLink noselect">
