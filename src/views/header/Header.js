@@ -51,7 +51,7 @@ const Header = () => {
                 params: {
                     'type': 'ERC20',
                     'options': {
-                        'address': "0xD2c149B14ed7684f8D4981E567CE894f9E0F89eb", // Polygon
+                        'address': "0x839F1a22A59eAAf26c85958712aB32F80FEA23d9", // Polygon
                         'symbol': "AXN",
                         'decimals': 18,
                         'image': 'https://stake.axion.network/metamask-axn-logo.png',
