@@ -27,16 +27,16 @@ const MarketStats = ({ marketData, toggleAutoUpdating, stakingData }) => {
 
             <div style={{ margin: '2%' }}>
                 <Grid container justify="space-evenly" spacing={3}>
-                    <Grid item lg={3} md={6} xs={10} key="USDTPrice">
+                    <Grid item lg={4} md={6} xs={10} key="USDTPrice">
                         <StatCard loading={Boolean(!marketData.usdtPerAxn)} stat="Current Price" amount={`$${marketData.usdtPerAxn}`} suffix="USDT" />
                     </Grid>
-                    <Grid item lg={3} md={6} xs={10} key="pricePerETH">
+                    {/* <Grid item lg={3} md={6} xs={10} key="pricePerETH">
                         <StatCard loading={Boolean(!marketData.axnPerEth)} stat="Axion Per ETH" amount={Number(marketData.axnPerEth).toLocaleString()} suffix="AXN"/>
-                    </Grid>
-                    <Grid item lg={3} md={6} xs={10} key="circSupply">
+                    </Grid> */}
+                    <Grid item lg={4} md={6} xs={10} key="circSupply">
                         <StatCard loading={Boolean(!marketData.circSupply)} stat="Circulating Supply" amount={Number(marketData.circSupply).toLocaleString()} suffix="AXN"/>
                     </Grid>
-                    <Grid item lg={3} md={6} xs={10} key="totalSupply">
+                    <Grid item lg={4} md={6} xs={10} key="totalSupply">
                         <StatCard loading={Boolean(!stakingData.total_axn_staked)} stat="Total Supply" amount={Math.floor(Number(marketData.circSupply + (stakingData.total_axn_staked ?? 0 ))).toLocaleString()} suffix="AXN" tooltip="Staked + Circulating" />
                     </Grid>
                     <Grid item lg={4} md={6} xs={10} key="marketCap.circulating">

@@ -81,13 +81,13 @@ const StakeExplorer = props => {
 
     const getStakes = async (addr) => {
         if (addr.length === 0) {
-            _error("Invalid Ethereum Address.")
+            _error("Invalid Polygon Address.")
             setLoading(false)
             return;
         }
 
         if (!Web3.utils.isAddress(addr)) {
-            _error("Invalid Ethereum Address.");
+            _error("Invalid Polygon Address.");
             return;
         }
 
@@ -114,7 +114,7 @@ const StakeExplorer = props => {
 
             <div style={{ padding: '2%', paddingBottom: 0 }}>
                 <Typography variant="h4" align="center" color="primary" style={{ fontWeight: '100' }}>Axion Stake Explorer</Typography>
-                <Typography variant="subtitle2" color="textSecondary" style={{ fontWeight: '400' }} align="center">Enter an Ethereum address to view its stakes.</Typography>
+                <Typography variant="subtitle2" color="textSecondary" style={{ fontWeight: '400' }} align="center">Enter a wallet address to view its stakes.</Typography>
                 <br/>
                
                 <Grid container alignItems="center" justify="center" spacing={2}>
@@ -129,8 +129,8 @@ const StakeExplorer = props => {
                             fullWidth 
                             variant="outlined" 
                             margin="dense" 
-                            title="Ethereum Address" 
-                            label="Ethereum Address" 
+                            title="Polygon Address" 
+                            label="Polygon Address" 
                         />
                     </Grid>
                     <Grid item md={1}>
