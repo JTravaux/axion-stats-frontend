@@ -43,6 +43,8 @@ const EcosystemBreakdown = () => {
 
             {data?.totals && (
                 <>
+                    <Typography variant="subtitle2" color="textSecondary" style={{ fontWeight: '400' }} align="center">NOTE: Liquid holder data has NOT been updated since migration.<br/>Updates coming soon.</Typography>
+                    <br />
                     <Typography variant="subtitle2" color="textSecondary" style={{ fontWeight: '400' }} align="center"><strong>{data.totals.holders.toLocaleString()}</strong> addresses hold at least 1 AXN.</Typography>
                     <Typography variant="subtitle2" color="textSecondary" style={{ fontWeight: '400' }} align="center">Ecosystem Total: <strong>{Math.round(data.totals.held_axn).toLocaleString()}</strong> AXN</Typography>
                     <Typography variant="subtitle2" color="textSecondary" style={{ fontWeight: '400', fontStyle: 'italic' }} align="center">Does not include contracts or dev fund</Typography>
