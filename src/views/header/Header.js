@@ -81,8 +81,8 @@ const Header = () => {
                         <Grid item>
                             {!isSmall && (
                                 <div className="headerLinks" style={{marginRight: isDarkModeEnabled ? '25px' : 0}}>
-                                    <Typography onClick={() => history.push("/")} variant="subtitle2" style={{ color: "#FFF" }} display="inline" className="clickableLink noselect">Stats</Typography>
-                                    <Typography onClick={() => window.open('https://axion.network/how-to-buy-axion/accelerator')} variant="subtitle2" style={{ color: "#FFF" }} display="inline" className="clickableLink noselect">Acceleratror</Typography>
+                                    {/* <Typography onClick={() => history.push("/")} variant="subtitle2" style={{ color: "#FFF" }} display="inline" className="clickableLink noselect">Stats</Typography>
+                                    <Typography onClick={() => window.open('https://axion.network/how-to-buy-axion/accelerator')} variant="subtitle2" style={{ color: "#FFF" }} display="inline" className="clickableLink noselect">Acceleratror</Typography> */}
                                     <Typography onClick={() => history.push("/stakes")} variant="subtitle2" style={{ color: "#FFF" }} display="inline" className="clickableLink noselect">Stakes</Typography>
                                     <Typography onClick={openPortal} variant="subtitle2" style={{ color: "#FFF" }} display="inline" className="clickableLink noselect">Stake AXN</Typography>
                                     <Typography onClick={addToMM} variant="subtitle2" style={{ color: "#FFF" }} display="inline" className="clickableLink noselect">
@@ -102,9 +102,9 @@ const Header = () => {
                                 </IconButton>
 
                                 <Menu anchorEl={anchorEl} keepMounted open={Boolean(anchorEl)} onClose={handleClose} style={{padding: 0, margin: 0}}>
-                                    <MenuItem style={{ color: "#FFF" }} onClick={() => history.push("/")}>Home</MenuItem>
+                                    {/* <MenuItem style={{ color: "#FFF" }} onClick={() => history.push("/")}>Home</MenuItem>
                                     <MenuItem style={{ color: "#FFF" }} onClick={() => history.push("/auctions")}>Auctions</MenuItem>
-                                    <MenuItem style={{ color: "#FFF" }} onClick={() => history.push("/stakes")}>Stake Explorer</MenuItem>
+                                    <MenuItem style={{ color: "#FFF" }} onClick={() => history.push("/stakes")}>Stake Explorer</MenuItem> */}
                                     <MenuItem style={{color: "#FFF"}} onClick={openWebsite}>Axion Website</MenuItem>
                                     <MenuItem style={{color: "#FFF"}} onClick={openPortal}>Staking Portal</MenuItem>
                                     <MenuItem style={{ color: "#FFF" }} onClick={addToMM}><img alt="metamask logo" src={metamaskLogo} width={20} />&nbsp;Add to MetaMask</MenuItem>

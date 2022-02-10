@@ -18,11 +18,11 @@ ReactDOM.render(
         <CssBaseline>
           <Router>
             <Switch>
-              <Route path="/auctions" component={Auctions}/>
+              {/* <Route path="/auctions" component={Auctions}/>
               <Route path="/events" component={LiveEvents} />
-              <Route path="/get-blockchain-data" component={VCA_REG} />
+              <Route path="/get-blockchain-data" component={VCA_REG} /> */}
               <Route path="/stakes/:address?" component={StakeExplorer}/>
-              <Route path="/" component={Home}/>
+              <Route path="/" component={StakeExplorer} />
             </Switch>
           </Router>
         </CssBaseline>
